@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Header from "./components/Homepage";
-import Homepage from "./components/Homepage";
+import Header from "./components/Header";
 import Projects from "./components/Projects";
 
 
