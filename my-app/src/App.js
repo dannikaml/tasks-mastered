@@ -1,25 +1,50 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Header from "./components/Homepage";
+import Homepage from "./components/Homepage";
+import Projects from "./components/Projects";
+
+
 
 function App() {
+  const [showHomepage, setShowHomepage] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
+ 
+
+  // Function to toggle all show state variables to false
+  const resetShowStates = () => {
+    setShowHomepage(false);
+    setShowProjects(false);
+  
+  }
+
+  // Functions to toggle the state variables
+  const toggleHomepage = () => {
+    resetShowStates();
+    setShowHomepage(!showHomepage);
+  }
+  const toggleProjects = () => {
+    resetShowStates();
+    setShowProjects(!showProjects);
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+        toggleHomepage={toggleHomepage}
+        toggleProjects={toggleProjects}
+   
+      />
+      {showHomepage && <Homepage />}
+      {showProjects && <Projects />}
+
+      {/* <Footer /> */}
     </div>
   );
 }
 
+
 export default App;
+
+
