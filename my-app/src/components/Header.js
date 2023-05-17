@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header({ toggleHomepage, toggleProjects }) {
+function Header({ toggleHomepage, toggleProjects, toggleNewProject }) {
     return (
       <header className="App-Header">
         <h1>Tasks Mastered</h1>
@@ -11,6 +11,9 @@ function Header({ toggleHomepage, toggleProjects }) {
             </a>
             <a href="#projects" onClick={toggleProjects}>
                 Projects
+            </a>
+            <a href="#newProject" onClick={toggleNewProject}>
+                New Project
             </a>
 
           </ul>
