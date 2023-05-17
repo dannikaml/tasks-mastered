@@ -4,20 +4,29 @@
   --secondary-color: #B1BCE6;
   --tertiary-color: #B7E5DD;
   --quaternary-color: #F1F0C0;
+  --backup-color: #c6b4970a;
   --primary-rgb: rgb(154, 134, 164);
   --secondary-rgb: rgb(177, 188, 230);
   --tertiary-rgb: rgb(183, 229, 221);
   --quaternary-rgb: rgb(241, 240, 192);
 }
 
-/* Example usage */
+
 body {
-  background-color: var(--primary-color);
+  background-color: var(--backup-color);
   color: var(--quaternary-color);
 }
 
 h1 {
   color: var(--secondary-color);
+}
+
+h2 {
+  color: #9A86A4;
+}
+
+li {
+  color: #282c34;
 }
 
 .button {
@@ -64,4 +73,38 @@ h1 {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Basic navigation styling */
+nav {
+  color: var(--primary-color);
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:xx-large;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 5px;
+}
+
+/* Hover effect */
+nav a:hover {
+  background-color: #B7E5DD;
+}
+
+p {
+  color: #282c34;
 }

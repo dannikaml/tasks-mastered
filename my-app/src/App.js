@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import './App.css';
 import Header from "./components/Header";
 import Projects from "./components/Projects";
+import Homepage from './components/Homepage';
 
 
 
@@ -42,6 +44,8 @@ function App() {
     </div>
   );
 }
+
+
 
 
 export default App;
