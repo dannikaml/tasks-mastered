@@ -20,10 +20,10 @@ const NewProject = ({ onAddProject }) => {
   return (
     <form onSubmit={handleSubmit}>
       <h2>New Project</h2>
-      <label htmlFor="title">Title:</label>
-      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-      <label htmlFor="description">Description:</label>
-      <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+      <p><label htmlFor="title">Title:</label>
+      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required /></p>
+      <p><label htmlFor="description">Description:</label>
+      <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required /></p>
       <button type="submit">Add Project</button>
     </form>
   );
