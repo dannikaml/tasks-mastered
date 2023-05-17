@@ -1,3 +1,32 @@
+
+:root {
+  --primary-color: #9A86A4;
+  --secondary-color: #B1BCE6;
+  --tertiary-color: #B7E5DD;
+  --quaternary-color: #F1F0C0;
+  --primary-rgb: rgb(154, 134, 164);
+  --secondary-rgb: rgb(177, 188, 230);
+  --tertiary-rgb: rgb(183, 229, 221);
+  --quaternary-rgb: rgb(241, 240, 192);
+}
+
+/* Example usage */
+body {
+  background-color: var(--primary-color);
+  color: var(--quaternary-color);
+}
+
+h1 {
+  color: var(--secondary-color);
+}
+
+.button {
+  background-color: var(--tertiary-color);
+  color: var(--primary-rgb);
+}
+
+
+
 .App {
   text-align: center;
 }
