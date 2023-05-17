@@ -15,10 +15,10 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
-      <label htmlFor="email">Email:</label>
-      <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      <label htmlFor="password">Password:</label>
-      <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      <p><label htmlFor="email">Email:</label>
+      <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></p>
+      <p><label htmlFor="password">Password:</label>
+      <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required /></p>
       <button type="submit">Login</button>
     </form>
   );

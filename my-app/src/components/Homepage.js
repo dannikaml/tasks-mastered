@@ -34,11 +34,6 @@ Our goal is to simplify your project management experience and empower you to ac
         </p>
       </section>
 
-      <section className="login-signup">
-        {!isLoggedIn && <LoginForm />}
-        {!isLoggedIn && <SignupForm />}
-      </section>
-
       <section className="how-to-get-started">
         <h2>How to Get Started</h2>
         <ol>
@@ -49,6 +44,13 @@ Our goal is to simplify your project management experience and empower you to ac
           <li>Stay organized and manage your tasks efficiently!</li>
         </ol>
       </section>
+      
+      <section className="login-signup">
+        {!isLoggedIn && <LoginForm />}
+        {!isLoggedIn && <SignupForm />}
+      </section>
+
+      
     </div>
   );
 };
