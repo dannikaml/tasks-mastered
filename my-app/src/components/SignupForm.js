@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
-const SIGNUP_USER = gql`
-  mutation SignupUser($email: String!, $password: String!) {
-    signupUser(email: $email, password: $password) {
+const CREATE_USER = gql`
+  mutation CreateUser($email: String!, $password: String!) {
+    createUser(input: { email: $email, password: $password }) {
       id
       email
     }
@@ -15,22 +15,23 @@ const SignupForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [signupUser, { loading, error }] = useMutation(SIGNUP_USER);
+  const [createUser, { loading, error }] = useMutation(CREATE_USER);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       // Send mutation request to create a new user
-      const { data } = await signupUser({ variables: { email, password } });
+      const { data } = await createUser({ variables: { email, password } });
 
       // User created successfully
-      console.log('User created successfully:', data.signupUser);
+      console.log('User created successfully:', data.createUser);
     } catch (error) {
       // Handle error
       console.error(error);
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit}>

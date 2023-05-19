@@ -12,11 +12,12 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser: (_, { input }) => {
+    signupUser: (_, { email, password }) => {
       // Create a new user using the input data and save it to the database
-      const newUser = new User(input);
+      const newUser = new User({ email, password });
       return newUser.save();
     },
+    
     updateUser: (_, { id, input }) => {
       // Update the user with the provided ID using the input data and return the updated user
       return User.findByIdAndUpdate(id, input, { new: true });

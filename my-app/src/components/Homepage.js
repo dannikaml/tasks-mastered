@@ -4,14 +4,14 @@ import SignupForm from './SignupForm';
 
 const Homepage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   useEffect(() => {
-    // Logic to check if user is logged in
-    // Example: You can use local storage or an API call to determine the login status
+    
     const checkLoginStatus = () => {
-      // Check login status here
-      // Set isLoggedIn state accordingly
-      // setIsLoggedIn(true) if the user is logged in
+      // Check if user is logged in using local storage or an API call
+      const loggedInStatus = localStorage.getItem('isLoggedIn');
+      const userIsLoggedIn = loggedInStatus === 'true'; // Convert string to boolean
+
+      setIsLoggedIn(userIsLoggedIn);
     };
 
     checkLoginStatus();
