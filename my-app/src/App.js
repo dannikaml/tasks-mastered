@@ -8,7 +8,7 @@ import NewProject from "./components/NewProject";
 
 
 function App() {
-  const [showHomepage, setShowHomepage] = useState(false);
+  const [showHomepage, setShowHomepage] = useState(true);
   const [showProjects, setShowProjects] = useState(false);
   const [showNewProject, setShowNewProject] = useState(false);
   const [projects, setProjects] = useState([]);
