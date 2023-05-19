@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NewProject = ({ onAddProject }) => {
+const NewProject = ({ handleNewProject }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -11,7 +11,7 @@ const NewProject = ({ onAddProject }) => {
         title,
         description,
       };
-      onAddProject(newProject);
+      handleNewProject(newProject);
       setTitle('');
       setDescription('');
     }

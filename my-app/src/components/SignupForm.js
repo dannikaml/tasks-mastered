@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 const SIGNUP_USER = gql`
-  mutation SignupUser($email: String!, $password: String!) {
-    signupUser(email: $email, password: $password) {
+  mutation createUser($input: UserInput!) {
+    createUser(input: $input) {
       id
       email
     }
@@ -22,7 +22,8 @@ const SignupForm = () => {
 
     try {
       // Send mutation request to create a new user
-      const { data } = await signupUser({ variables: { email, password } });
+      const input = { email, password, username: 'foobar' };
+      const { data } = await signupUser({ variables: { input } });
 
       // User created successfully
       console.log('User created successfully:', data.signupUser);
