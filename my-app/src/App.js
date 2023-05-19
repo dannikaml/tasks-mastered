@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-// import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import './App.css';
 import Header from "./components/Header";
 import Projects from "./components/Projects";
 import Homepage from './components/Homepage';
 import NewProject from "./components/NewProject";
-
 
 function App() {
   const [showHomepage, setShowHomepage] = useState(true);
@@ -46,7 +44,7 @@ function App() {
         toggleProjects={toggleProjects}
         toggleNewProject={toggleNewProject}
       />
-      {showHomepage && <Homepage />}
+      {showHomepage && <Homepage toggleHomepage={toggleHomepage} />}
       {showProjects && <Projects projects={projects} />}
       {showNewProject && <NewProject handleNewProject={handleNewProject} />}
     </div>
