@@ -13,9 +13,13 @@
     "author": "",
     "license": "MIT",
     "devDependencies": {
-        "concurrently": "^5.3.0"
+        "concurrently": "^5.3.0",
+        "nodemon": "^2.0.22"
     },
     "dependencies": {
-        "@apollo/client": "^3.7.14"
+        "@apollo/client": "^3.7.14",
+        "@apollo/server": "^4.7.1",
+        "dotenv": "^16.0.3",
+        "jsonwebtoken": "^9.0.0"
     }
 }
