@@ -18,15 +18,33 @@ const NewProject = ({ handleNewProject }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="new-project-form">
       <h2>New Project</h2>
-      <p><label htmlFor="title">Title:</label>
-      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required /></p>
-      <p><label htmlFor="description">Description:</label>
-      <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required /></p>
-      <button type="submit">Add Project</button>
+      <p>
+        <label htmlFor="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          className="new-project-input"
+        />
+      </p>
+      <p>
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+          className="new-project-textarea"
+        />
+      </p>
+      <button type="submit" className="new-project-button">+ Add Project</button>
     </form>
   );
 };
 
 export default NewProject;
+
