@@ -24,11 +24,19 @@ const typeDefs = gql`
     createUser(input: UserInput!): User!
     updateUser(id: ID!, input: UserInput!): User!
     deleteUser(id: ID!): DeleteUserResponse!
+    loginUser(input: UserInput!): AuthUserResponse!
   }
 
   type DeleteUserResponse {
     success: Boolean!
     message: String!
+  }
+
+  type AuthUserResponse {
+    id: ID!
+    email: String!
+    username: String!
+    token: String!
   }
 `;
 
