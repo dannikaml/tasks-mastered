@@ -1,12 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Projects = ({ projects }) => {
+  const [tasks, setTasks] = useState([]);
+
+  const handleTaskChange = (index, event, taskIndex) => {
+    const newTasks = [...tasks];
+    newTasks[index][taskIndex] = event.target.value;
+    setTasks(newTasks);
+  };
+  
+  const handleTaskComplete = (index, taskIndex) => {
+    const newTasks = [...tasks];
+    newTasks[index][taskIndex] = `✓ ${newTasks[index][taskIndex]}`;
+    setTasks(newTasks);
+  };
+  
+
+  const handleAddTask = (index) => {
+    const newTasks = [...tasks];
+    if (newTasks[index]) {
+      newTasks[index].push('');
+    } else {
+      newTasks[index] = [''];
+    }
+    setTasks([...newTasks]);
+  };
+  
+
   return (
-    <div>
-      <h2>Projects</h2>
-      <ul>
-        {projects.map((project) => (
-          <li key={project.id}>{project.title}</li>
+    <div className="projects-container">
+      <h2 className="projects-heading">My Projects</h2>
+      <ul className="projects-list">
+        {projects.map((project, index) => (
+          <li key={project.id} className="project-item">
+            <h2 className="project-title">{project.title}</h2>
+            <p className="project-description">{project.description}</p>
+            {tasks[index] &&
+              tasks[index].map((task, taskIndex) => (
+                <div key={taskIndex} className="task-item">
+                  <input
+                    type="text"
+                    value={task}
+                    onChange={(event) =>
+                      handleTaskChange(index, event, taskIndex)
+                    }
+                    className="task-input"
+                  />
+                  <button
+                    onClick={() => handleTaskComplete(index, taskIndex)}
+                    className="task-button"
+                  >
+                    Mark Complete
+                  </button>
+                </div>
+              ))}
+            <button
+              onClick={() => handleAddTask(index)}
+              className="add-task-button"
+            >
+              + Add Task
+            </button>
+          </li>
         ))}
       </ul>
     </div>
@@ -14,3 +68,4 @@ const Projects = ({ projects }) => {
 };
 
 export default Projects;
+
