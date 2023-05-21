@@ -45,7 +45,11 @@ const LoginForm = () => {
       const { data: apiData } = await client.query({
         query: gql`
           query {
-            // Add your query here
+              users {
+                id
+                username
+                email
+              }
           }
         `,
       });
