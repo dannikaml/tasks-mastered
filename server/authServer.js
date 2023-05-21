@@ -10,25 +10,23 @@ app.use(express.json())
 const posts = [
     {
         username: 'Alex',
-        title: 'Post 1'
-    }
-    ,{
+        title: 'Project 1'
+    },
+    {
         username: 'Jim',
-        title: 'Post 2'
+        title: 'Project 2'
     }
 ]
-
 
 app.get('/posts', authenticateToken, (req, res) => {
     res.json(posts.filter(post => post.username === req.user.name))
 })
 
 app.post('/login', (req, res) => {
-
     const username = req.body.username
-    const user = { name: username}
+    const user = { name: username }
 
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' })
     res.json({ accessToken: accessToken })
 })
 
