@@ -265,7 +265,6 @@ p {
   margin-bottom: 10px;
   border: 1px solid var(--primary-color);
   border-radius: 4px;
-  text-align: center;
 }
 
 .new-project-textarea {
@@ -276,7 +275,6 @@ p {
   margin-bottom: 10px;
   border: 1px solid var(--primary-color);
   border-radius: 4px;
-  text-align: center;
 }
 
 .new-project-button {
@@ -317,6 +315,7 @@ p {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
+  background-color: #b1bce636;
 }
 
 .project-title {
@@ -339,7 +338,7 @@ p {
 
 .task-input {
   flex: 1;
-  padding: 5px;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -362,7 +361,7 @@ p {
   background-color: var(--tertiary-color-2);
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
 }
