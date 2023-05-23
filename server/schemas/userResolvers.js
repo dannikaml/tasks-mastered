@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const mySecret = "dannika";
 
 const resolvers = {
   Query: {
@@ -54,7 +55,7 @@ const resolvers = {
         });
     },
     loginUser: async (_, { input }) => {
-      const { email, password } = input;
+      const { username, email, password } = input;
 
       // Check if the user with the provided email exists
       const user = await User.findOne({ email });
@@ -69,7 +70,7 @@ const resolvers = {
       }
 
       // Create a JSON Web Token (JWT) for the authenticated user
-      const token = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' });
+      const token = jwt.sign({ data: user.id }, mySecret, { expiresIn: '2h' });
 
       // Return the user's id, email, username, and the JWT token
       return {
