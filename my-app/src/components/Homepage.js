@@ -42,14 +42,14 @@ const Homepage = () => {
 
       <section className="getting-started">
         <h2>How to Get Started</h2>
-       
+        <p className='access'>
+          In order to access the full features of our app, please log in or sign up for an account. Start managing your tasks and staying organized today!
+        </p>
           <li>Create an account or log in if you already have one.</li>
           <li>Create New Projects and then add tasks to them.</li>
           <li>Track your progress and mark tasks as completed.</li>
           <li>Stay organized and manage your tasks efficiently!</li>
-          <p className='access'>
-          In order to access the full features of our app, please log in or sign up for an account. Start managing your tasks and staying organized today!
-        </p>
+         
       </section>
 
       <section className="login-signup">
@@ -69,7 +69,7 @@ const Homepage = () => {
           <h2>Logged-in Content</h2>
           <p>Welcome, you are logged in!</p>
           <button onClick={handleLogout}>Logout</button>
-          {/* Add the rest of your navbar and site content here */}
+          
         </section>
       )}
     </div>
