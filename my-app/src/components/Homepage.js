@@ -45,10 +45,6 @@ const Homepage = () => {
         <p className='access'>
           In order to access the full features of our app, please log in or sign up for an account. Start managing your tasks and staying organized today!
         </p>
-          <li>Create an account or log in if you already have one.</li>
-          <li>Create New Projects and then add tasks to them.</li>
-          <li>Track your progress and mark tasks as completed.</li>
-          <li>Stay organized and manage your tasks efficiently!</li>
          
       </section>
 
