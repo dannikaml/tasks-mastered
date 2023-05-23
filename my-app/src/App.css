@@ -122,11 +122,18 @@ p {
 
 .access {
   font-size: larger;
-  font-weight: 500;
+  font-weight: 400;
   padding: 20px;
   margin: 20px;
 }
 
+.intro {
+  text-align: center;
+  font-size: larger;
+  padding: 40px;
+  border-color: grey;
+  background-color: #b1bce623;
+  }
 
 .getting-started {
   font-size: larger;
@@ -160,7 +167,8 @@ p {
 
 .login-signup {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center; 
   align-items: center;
   padding: 20px;
 }
@@ -197,20 +205,17 @@ p {
 }
 
 .login-signup button {
-  padding: 8px;
-  background-color: var(--tertiary-color);
+  padding: 17px;
+  background-color: var(--tertiary-color-2);
   color: white;
   border: none;
   border-radius: 4px;
   cursor:var(--tertiary-color-2);
+  font-size: larger;
 }
 
-.login-signup button :hover {
-  padding: 8px;
-  background-color: var(--tertiary-color);
-  color: rgb(8, 8, 8);
-  border: none;
-  border-radius: 4px;
+.login-signup button:hover {
+  background-color: #B1BCE6;
 }
 
 .login-signup button[type="submit"] {
@@ -228,11 +233,10 @@ p {
 }
 
 
-.intro {
-  text-align: center;
-  font-size: larger;
-  padding: 40px;
-}
+.getting-started h2 {
+  color: #9A86A4;
+  font-weight: 700;
+  }
 
 .getting-started li {
   list-style-type: disc;
