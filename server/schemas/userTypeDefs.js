@@ -25,6 +25,8 @@ const typeDefs = gql`
     updateUser(id: ID!, input: UserInput!): User!
     deleteUser(id: ID!): DeleteUserResponse!
     loginUser(input: UserInput!): AuthUserResponse!
+    createPaymentIntent(amount: Float!): PaymentIntentResponse!
+    donate(amount: Float!): String! 
   }
 
   type DeleteUserResponse {
@@ -37,6 +39,10 @@ const typeDefs = gql`
     email: String!
     username: String!
     token: String!
+  }
+
+  type PaymentIntentResponse {
+    clientSecret: String!
   }
 `;
 

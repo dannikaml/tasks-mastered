@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { ApolloClient, InMemoryCache, createHttpLink} from '@apollo/client';
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import './App.css';
 import Header from "./components/Header";
 import Projects from "./components/Projects";
 import Homepage from './components/Homepage';
 import NewProject from "./components/NewProject";
+import Donate from "./components/Donate";
 
-// Construct our main GraphQL API endpoint
+// GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
@@ -33,17 +34,19 @@ const client = new ApolloClient({
 
 
 function App() {
-  
+
   const [showHomepage, setShowHomepage] = useState(true);
   const [showProjects, setShowProjects] = useState(false);
   const [showNewProject, setShowNewProject] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [showDonate, setShowDonate] = useState(false);
 
   // Function to toggle all show state variables to false
   const resetShowStates = () => {
     setShowHomepage(false);
     setShowProjects(false);
     setShowNewProject(false);
+    setShowDonate(false);
   }
 
   // Functions to toggle the state variables
@@ -59,6 +62,10 @@ function App() {
     resetShowStates();
     setShowNewProject(!showNewProject);
   }
+  const toggleDonate = () => {
+    resetShowStates();
+    setShowDonate(!showNewProject);
+  }
 
   // Function to handle creating a new project
   const handleNewProject = (newProject) => {
@@ -71,10 +78,13 @@ function App() {
         toggleHomepage={toggleHomepage}
         toggleProjects={toggleProjects}
         toggleNewProject={toggleNewProject}
+        toggleDonate={toggleDonate}
       />
+      
       {showHomepage && <Homepage toggleHomepage={toggleHomepage} />}
       {showProjects && <Projects projects={projects} />}
       {showNewProject && <NewProject handleNewProject={handleNewProject} />}
+      {showDonate && <Donate toggleDonate={toggleDonate} />}
     </div>
   );
 }
