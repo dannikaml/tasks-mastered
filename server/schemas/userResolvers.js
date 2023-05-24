@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mySecret = "dannika";
+const stripe = require('stripe')('sk_test_51NB5q0CQLaxfdfIjqS6oGgKEa4QSmpzw3yYb1Ac61EPTdQj2ttzSwO1mcKuaKZX68axK7JXTfrK7JHAlAuWvMcGw00xuTLw5aK');
 
 const resolvers = {
   Query: {
@@ -80,7 +81,30 @@ const resolvers = {
         token,
       };
     },
+    donate: async (_, { amount }) => {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [
+          {
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: 'Donation',
+              },
+              unit_amount: Math.round(amount * 100), // Convert amount to cents
+            },
+            quantity: 1,
+          },
+        ],
+        mode: 'payment',
+        success_url: 'http://your-website.com/success',
+        cancel_url: 'http://your-website.com/cancel',
+      });
+
+      return session.id;
+    },
   },
 };
 
 module.exports = resolvers;
+

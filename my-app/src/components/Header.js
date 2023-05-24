@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header({ toggleHomepage, toggleProjects, toggleNewProject }) {
+function Header({ toggleHomepage, toggleProjects, toggleNewProject, toggleDonate }) {
   return (
     <div className="header-container">
       <h1>Tasks Mastered</h1>
@@ -13,6 +13,9 @@ function Header({ toggleHomepage, toggleProjects, toggleNewProject }) {
         </a>
         <a href="#newProject" onClick={toggleNewProject}>
           + NewProject
+        </a>
+        <a href="#donate" onClick={toggleDonate}>
+          Donate
         </a>
       </nav>
     </div>

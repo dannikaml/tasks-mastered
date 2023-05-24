@@ -91,7 +91,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 600px;
+  width: 700px;
   background-color: #f1f1f1;
   padding: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -102,7 +102,7 @@ nav a {
   display: block;
   color: var(--primary-color);
   text-decoration: none;
-  padding: 5px;
+  padding: 8px;
   
 }
 

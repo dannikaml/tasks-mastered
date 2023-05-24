@@ -1,12 +1,16 @@
 import React from 'react';
+// import { loadStripe } from '@stripe/stripe-js';
 import ReactDOM from 'react-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+
+
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql', // Replace with your server URL
+  uri: 'http://localhost:3001/graphql', 
   cache: new InMemoryCache(),
 });
 
