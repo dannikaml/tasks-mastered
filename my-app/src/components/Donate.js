@@ -10,7 +10,7 @@ const DONATE_MUTATION = gql`
   }
 `;
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_test_51NB5q0CQLaxfdfIj3kWFncE5r7K6JlkrWiVVmDJK5gLPN0n81bdzlAdLOys14AoE5j9b8LDady4QD98NQJu1jqp000vj0yvI5p');
 
 const DonationForm = () => {
   const [amount, setAmount] = useState(0);
@@ -18,7 +18,8 @@ const DonationForm = () => {
 
   const handleDonate = async () => {
     const stripe = await stripePromise;
-    const { data } = await donate({ variables: { amount } });
+    const parseAmount = parseFloat(amount);
+    const { data } = await donate({ variables: { amount: parseAmount } });
 
     // Redirect to Stripe checkout
     const { sessionId } = data.donate;
