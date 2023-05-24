@@ -97,11 +97,11 @@ const resolvers = {
           },
         ],
         mode: 'payment',
-        success_url: 'http://your-website.com/success',
-        cancel_url: 'http://your-website.com/cancel',
+        success_url: 'http://localhost:3001/success',
+        cancel_url: 'http://localhost:3001/cancel',
       });
 
-      return session.id;
+      return { sessionId: session.id };
     },
   },
 };
