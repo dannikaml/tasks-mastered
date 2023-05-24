@@ -1,20 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 const Projects = ({ projects }) => {
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    // Retrieve tasks data from localStorage when the component mounts
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save tasks data to localStorage whenever it changes
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleTaskChange = (index, event, taskIndex) => {
     const newTasks = [...tasks];
     newTasks[index][taskIndex] = event.target.value;
     setTasks(newTasks);
   };
-  
+
   const handleTaskComplete = (index, taskIndex) => {
     const newTasks = [...tasks];
     newTasks[index][taskIndex] = `✓ ${newTasks[index][taskIndex]}`;
     setTasks(newTasks);
   };
-  
 
   const handleAddTask = (index) => {
     const newTasks = [...tasks];
@@ -23,9 +36,8 @@ const Projects = ({ projects }) => {
     } else {
       newTasks[index] = [''];
     }
-    setTasks([...newTasks]);
+    setTasks(newTasks);
   };
-  
 
   return (
     <div className="projects-container">
@@ -41,9 +53,7 @@ const Projects = ({ projects }) => {
                   <input
                     type="text"
                     value={task}
-                    onChange={(event) =>
-                      handleTaskChange(index, event, taskIndex)
-                    }
+                    onChange={(event) => handleTaskChange(index, event, taskIndex)}
                     className="task-input"
                   />
                   <button
@@ -54,10 +64,7 @@ const Projects = ({ projects }) => {
                   </button>
                 </div>
               ))}
-            <button
-              onClick={() => handleAddTask(index)}
-              className="add-task-button"
-            >
+            <button onClick={() => handleAddTask(index)} className="add-task-button">
               + Add Task
             </button>
           </li>
@@ -68,4 +75,3 @@ const Projects = ({ projects }) => {
 };
 
 export default Projects;
-

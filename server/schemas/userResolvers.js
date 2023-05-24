@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const mySecret = "dannika";
+const stripe = require('stripe')('sk_test_51NB5q0CQLaxfdfIjqS6oGgKEa4QSmpzw3yYb1Ac61EPTdQj2ttzSwO1mcKuaKZX68axK7JXTfrK7JHAlAuWvMcGw00xuTLw5aK');
 
 const resolvers = {
   Query: {
@@ -54,7 +56,7 @@ const resolvers = {
         });
     },
     loginUser: async (_, { input }) => {
-      const { email, password } = input;
+      const { username, email, password } = input;
 
       // Check if the user with the provided email exists
       const user = await User.findOne({ email });
@@ -69,7 +71,7 @@ const resolvers = {
       }
 
       // Create a JSON Web Token (JWT) for the authenticated user
-      const token = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' });
+      const token = jwt.sign({ data: user.id }, mySecret, { expiresIn: '2h' });
 
       // Return the user's id, email, username, and the JWT token
       return {
@@ -79,7 +81,30 @@ const resolvers = {
         token,
       };
     },
+    donate: async (_, { amount }) => {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [
+          {
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: 'Donation',
+              },
+              unit_amount: Math.round(amount * 100), // Convert amount to cents
+            },
+            quantity: 1,
+          },
+        ],
+        mode: 'payment',
+        success_url: 'http://localhost:3001/success',
+        cancel_url: 'http://localhost:3001/cancel',
+      });
+
+      return { sessionId: session.id };
+    },
   },
 };
 
 module.exports = resolvers;
+

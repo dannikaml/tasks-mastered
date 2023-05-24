@@ -20,11 +20,17 @@ const typeDefs = gql`
     user(id: ID!): User
   }
 
+  type DonateResult {
+    sessionId: String
+  }
+
   type Mutation {
     createUser(input: UserInput!): User!
     updateUser(id: ID!, input: UserInput!): User!
     deleteUser(id: ID!): DeleteUserResponse!
     loginUser(input: UserInput!): AuthUserResponse!
+    createPaymentIntent(amount: Float!): PaymentIntentResponse!
+    donate(amount: Float!): DonateResult
   }
 
   type DeleteUserResponse {
@@ -37,6 +43,10 @@ const typeDefs = gql`
     email: String!
     username: String!
     token: String!
+  }
+
+  type PaymentIntentResponse {
+    clientSecret: String!
   }
 `;
 

@@ -15,6 +15,7 @@ const LOGIN_USER = gql`
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
 
   const [loginUser, { loading, error }] = useMutation(LOGIN_USER);
 
@@ -22,7 +23,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const input = { email, password };
+      const input = { email, password, username };
       const { data } = await loginUser({ variables: { input } });
 
       // User logged in successfully
@@ -31,26 +32,9 @@ const LoginForm = () => {
       // Store the token in local storage or cookies
       const token = data.loginUser.token;
       localStorage.setItem('token', token); // Store in local storage
+      
+      console.log('new client created');
 
-      // Create a new Apollo client instance with the token set in the request headers
-      const client = new ApolloClient({
-        uri: 'http://localhost:3001/graphql',
-        cache: new InMemoryCache(),
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      // Use the client for subsequent API calls
-      const { data: apiData } = await client.query({
-        query: gql`
-          query {
-            // Add your query here
-          }
-        `,
-      });
-
-      console.log('API response:', apiData);
 
     } catch (error) {
       // Handle error
@@ -79,6 +63,15 @@ const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+        />
+      </p>
+      <p>
+        <label htmlFor="username">Username:</label>
+        <input 
+          type="text" 
+          id="username" 
+          value={username} onChange={(e) => setUsername(e.target.value)} 
+          required 
         />
       </p>
       <button type="submit">Login</button>
