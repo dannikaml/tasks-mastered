@@ -40,4 +40,3 @@ const apolloServerStart = async () => {
   
 // Call function to start the server
   apolloServerStart();
-
