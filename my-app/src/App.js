@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import './App.css';
@@ -40,6 +40,17 @@ function App() {
   const [showNewProject, setShowNewProject] = useState(false);
   const [projects, setProjects] = useState([]);
   const [showDonate, setShowDonate] = useState(false);
+
+  const getProjects = async () => {
+    const savedProjects = localStorage.getItem('projects') || [];
+    if (savedProjects) {
+      setProjects(JSON.parse(savedProjects));
+    }
+  }
+
+  useEffect(() => {
+    getProjects();
+  }, [])
 
   // Function to toggle all show state variables to false
   const resetShowStates = () => {

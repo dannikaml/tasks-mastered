@@ -3,13 +3,20 @@ import React, { useState, useEffect } from 'react';
 
 const Projects = ({ projects }) => {
   const [tasks, setTasks] = useState([]);
+  const [data, setData] = useState(projects ? projects : [])
 
-  useEffect(() => {
-    // Retrieve tasks data from localStorage when the component mounts
+  const getTask = async () => {
     const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {
+      console.log('task data ===', savedTasks, JSON.parse(savedTasks));
       setTasks(JSON.parse(savedTasks));
     }
+  }
+
+  useEffect(() => {
+    console.log('check project props ===', projects)
+    // Retrieve tasks data from localStorage when the component mounts
+    getTask()
   }, []);
 
   useEffect(() => {
@@ -43,7 +50,7 @@ const Projects = ({ projects }) => {
     <div className="projects-container">
       <h2 className="projects-heading">My Projects</h2>
       <ul className="projects-list">
-        {projects.map((project, index) => (
+        {data.length && data.map((project, index) => (
           <li key={project.id} className="project-item">
             <h2 className="project-title">{project.title}</h2>
             <p className="project-description">{project.description}</p>
