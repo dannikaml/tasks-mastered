@@ -4,13 +4,19 @@ const NewProject = ({ handleNewProject }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (title && description) {
       const newProject = {
         title,
         description,
       };
+      let data = await localStorage.getItem('projects') || []
+      if (data) {
+        data = JSON.parse(data) || []
+      }
+      data.push(newProject);
+      localStorage.setItem('projects', JSON.stringify(data))
       handleNewProject(newProject);
       setTitle('');
       setDescription('');
