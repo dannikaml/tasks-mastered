@@ -80,5 +80,5 @@ const Projects = ({ projects }) => {
     </div>
   );
 };
-
+// cool comment
 export default Projects;
