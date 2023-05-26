@@ -11,17 +11,22 @@ const NewProject = ({ handleNewProject }) => {
         title,
         description,
       };
-      let data = await localStorage.getItem('projects') || []
+  
+      let data = localStorage.getItem('projects');
       if (data) {
-        data = JSON.parse(data) || []
+        data = JSON.parse(data);
+      } else {
+        data = [];
       }
+  
       data.push(newProject);
-      localStorage.setItem('projects', JSON.stringify(data))
+      localStorage.setItem('projects', JSON.stringify(data));
       handleNewProject(newProject);
       setTitle('');
       setDescription('');
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className="new-project-form">
