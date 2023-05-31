@@ -2,20 +2,23 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shielded-brook-82573.herokuapp.com/",
+  "homepage": "https://tasks-mastered-frontend.herokuapp.com",
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "@apollo/server": "^4.7.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "express": "^4.18.2",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "pre-start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,9 +1,9 @@
-GET http://localhost:3001/posts
+GET https://tasks-mastered-backend.herokuapp.com/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWxleCIsImlhdCI6MTY4NDQ1NDU2NH0.UnfnQWK6NajWaAR4CbBuWdlHa5Eai_luWs84sQbcwWg
 
 ###
 
-POST http://localhost:3001/login
+POST https://tasks-mastered-backend.herokuapp.com/login
 Content-Type: application/json
 
 {
